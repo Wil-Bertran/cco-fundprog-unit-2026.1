@@ -42,8 +42,6 @@ def main ():
                 print(f"Prazo:sSemana {semana_entrega}")
             else:
                 print("\nNenhuma demanda registrada. Por favor, insira uma demanda primeiro.")
-        elif opcao == "3":
-            print("\nExecutando motor de explosão...")
         elif opcao == "4":
             print("encerrando o programa...")
             break
