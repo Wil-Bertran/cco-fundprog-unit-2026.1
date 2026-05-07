@@ -25,6 +25,25 @@ def executar_motor_explosao(quantidade_pedida, componentes):
         else:
             print(f"Item: {nome_item:12} | [OK] Saldo final: {saldo_pos_producao}")
 
+#PLANILHA
+def mostrar_planilha(necessidades):
+    semanas = 8
+
+    print("\n--- PLANILHA DE NECESSIDADES ---")
+
+    print("Componente".ljust(15), end="")
+    for i in range(1, semanas + 1):
+        print(f"S{i}".rjust(5), end="")
+    print()
+
+    print("-" * (15 + semanas * 5))
+
+    for componente, valores in necessidades.items():
+        print(componente.ljust(15), end="")
+        for v in valores:
+            print(str(v).rjust(5), end="")
+        print()
+
 def exibir_menu():
     print("\n" + "="*35)
     print("      SISTEMA MRP - APPLE IND.     ")
@@ -73,6 +92,17 @@ def main():
         elif opcao == "3":
             if pedido_existe:
                 executar_motor_explosao(quantidade_pedida, estoque_central)
+                 # PLANILHA
+                necessidades = {
+                    "Bateria": [0, 0, quantidade_pedida, 0, 0, 0, 0, 0],
+                    "Tela": [0, 0, quantidade_pedida, 0, 0, 0, 0, 0],
+                    "Processador": [0, 0, quantidade_pedida, 0, 0, 0, 0, 0],
+                    "Carcaça": [0, 0, quantidade_pedida, 0, 0, 0, 0, 0],
+                    "Memória": [0, 0, quantidade_pedida, 0, 0, 0, 0, 0],
+                }
+
+                mostrar_planilha(necessidades)
+
             else:
                 print("\n[!] Erro: Defina a demanda antes de executar o motor.")
 
